@@ -11,16 +11,13 @@ class CharacterListView extends React.Component {
     super(props);
   }
 
-  componentDidMount(props) {
-    console.log("cdm");
-    props.getSwapi();
+  componentDidMount() {
+    this.props.getSwapi();
   }
 
   render() {
     if (this.props.fetching) {
-      return (
-        <p>loading...</p>
-      )
+      return <p>loading...</p>;
     }
     return (
       <div className="CharactersList_wrapper">
@@ -31,8 +28,8 @@ class CharacterListView extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  characters: state.characters,
-  fetching: state.fetching
+  characters: state.charsReducer.characters,
+  fetching: state.charsReducer.fetching
 });
 
 // our mapStateToProps needs to have two properties inherited from state

@@ -8,13 +8,11 @@ export const FAILURE = "FAILURE";
 // one for fetching, one for success and one for failure
 
 export const getSwapi = () => dispatch => {
-  console.log("getSwapi");
   dispatch({ type: FETCHING });
   axios
     .get("https://swapi.co/api/people/")
     .then(response => {
-      console.log(response);
-      dispatch({ type: SUCCESS, payload: response.data });
+      dispatch({ type: SUCCESS, payload: response.data.results });
     })
     .catch(error => dispatch({ type: FAILURE, payload: error }));
 };

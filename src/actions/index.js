@@ -8,10 +8,14 @@ export const FAILURE = "FAILURE";
 // one for fetching, one for success and one for failure
 
 export const getSwapi = () => dispatch => {
+  console.log("getSwapi");
   dispatch({ type: FETCHING });
   axios
     .get("https://swapi.co/api/people/")
-    .then(response => dispatch({ type: SUCCESS, payload: response.data }))
+    .then(response => {
+      console.log(response);
+      dispatch({ type: SUCCESS, payload: response.data });
+    })
     .catch(error => dispatch({ type: FAILURE, payload: error }));
 };
 // our action creator will be a function that returns a function
